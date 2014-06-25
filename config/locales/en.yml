@@ -7,6 +7,9 @@ en:
     testimonials:
       admin:
          testimonials:
+           tabs:
+             name: Testimonials
+             reorder_only: You can use this tab to re-order the display of testimonials on this page. To control which testimonials are displayed use the Testimonials Options link below.
           records:
             title: Testimonials
             no_items_yet: There are no testimonials yet.
