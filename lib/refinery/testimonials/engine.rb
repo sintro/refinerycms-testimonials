@@ -7,8 +7,8 @@ module Refinery
       engine_name :refinery_testimonials
 
       def self.register_testimonials(tab)
-        # tab.name = "testimonials"
-        # tab.partial = "/refinery/testimonials/admin/testimonials/tabs/testimonials"
+        tab.name = "testimonials"
+        tab.partial = "/refinery/testimonials/admin/testimonials/tabs/testimonials"
       end
 
       before_inclusion do
@@ -30,9 +30,9 @@ module Refinery
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Testimonials)
-        # Refinery::Pages::Tab.register do |tab|
-          # register_testimonials tab
-        # end
+        Refinery::Pages::Tab.register do |tab|
+          register_testimonials tab
+        end
       end
 
     end
