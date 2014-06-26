@@ -1,18 +1,25 @@
 Refinery::PagesController.class_eval do
-  append_before_filter :get_testimonials, :only => [:show]
+  append_before_filter :get_testimonials, only: [:show]
+  append_after_filter :set_page_part, only: [:create, :update]
   protected
 
   def get_testimonials
-    # logger.debug "Running testimonials"
-    # logger.debug "----------- #{page.testimonials_show} ---------------"
-    # logger.debug "----------- #{page.testimonials_count} ---------------"
-    # logger.debug "----------- #{page.testimonials_select} ---------------"
     if @page.testimonials_show
 
       n = page.testimonials_count==0 ? Refinery::Testimonials::Testimonial.count : page.testimonials_count
       @testimonials = Refinery::Testimonials::Testimonial.scoped
       @testimonials = page.testimonials_select=='Random' ? @testimonials.random(n) : @testimonials.recent(n)
 
+    end
+  end
+
+  private
+  def check_and_add_page_part
+    if @page.testimonials_show
+      @page.parts << {
+        title: :testimonials,
+        position: @page.parts.count
+      } unless @page.part_with_title('testimonials')
     end
   end
 end
