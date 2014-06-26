@@ -3,21 +3,21 @@
   <div class='field enable'>
     <p>
       <%= f.check_box :testimonials_show, {}, true, false  %>
-      <%= f.label :testimonials_show, "Show Testimonials on this page?" %>
+      <%= f.label :testimonials_show, t('.show_on_page') %>
     </p>
   </div>
 
   <div class='fields'>
     <p>
-      <%= f.label  :testimonials_count, "How many testimonials to show (Enter 0 to show all)" %>
+      <%= f.label  :testimonials_count, t('.how_many') %>
       <%= f.number_field  :testimonials_count  %>
     </p>
 
     <p>Select Testimonals By  </p>
       <%= f.radio_button  :testimonials_select,  'Recent', :class=> 'button' %>
-      <%= f.label :testimonials_select, 'By date (Recent first)', :value=> 'Recent' %>
+      <%= f.label :testimonials_select, t('.by_date'), :value=> 'Recent' %>
       <%= f.radio_button  :testimonials_select,  'Random', :class => 'button' %>
-      <%= f.label :testimonials_select, 'Random', :value => 'Random' %>
+      <%= f.label :testimonials_select, t('.random'), :value => 'Random' %>
   </div>
 
 </div>
