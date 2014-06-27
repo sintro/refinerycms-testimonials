@@ -6,8 +6,8 @@ Refinery::Page.class_eval do
   before_save :testimonial_page_part
 
   def testimonial_page_part
-    testimonial_part = @page.part_with_title('testimonials')
-    @page.parts << {title: 'testimonials', position: @page.parts.count} if @page.testimonials_show && !testimonial_part
-    @page.parts.delete(testimonial_part) if testimonial_part && !@page.testimonials_show
+    testimonial_part = part_with_title('Testimonials')
+    parts.build(title: 'Testimonials', position: parts.count) if testimonials_show && !testimonial_part
+    parts.delete(testimonial_part) if testimonial_part && !testimonials_show
   end
 end
