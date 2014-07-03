@@ -11,3 +11,5 @@ spec/dummy/dummy_dev
 *.hide
 
 private/*
+
+junk.txt

@@ -5,6 +5,11 @@ module Refinery
 
         crudify :'refinery/testimonials/testimonial',
                 :title_attribute => :flash_name, :xhr_paging => true
+
+        def testimonial_params
+          params.require(:testimonial).permit(:name, :quote, :company, :job_title, :website, :received_date, :received_channel, :position, :display)
+        end
+
       end
     end
   end

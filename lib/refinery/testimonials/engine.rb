@@ -6,11 +6,6 @@
 
       engine_name :refinery_testimonials
 
-      def self.register_testimonials(tab)
-        tab.name = 'testimonials'
-        tab.partial = '/refinery/testimonials/admin/testimonials/tabs/testimonial_control'
-      end
-
       before_inclusion do
         Refinery::Plugin.register do |plugin|
           plugin.name = 'refinery_testimonials'
@@ -21,14 +16,14 @@
             :class_name => Refinery::Testimonials::Testimonial,
             :title =>  'name'
           }
+          plugin.options_template = 'testimonials_page_options'
+          plugin.edit_page_template = 'positioning_tab'
+          plugin.page_attributes = %w(testimonials_show testimonials_count testimonials_select)
         end
       end
 
       config.after_initialize do
         Refinery.register_extension(Refinery::Testimonials)
-        Refinery::Pages::Tab.register do |tab|
-          register_testimonials tab
-        end
         require 'refinery/testimonial_item_presenter'
       end
     end
