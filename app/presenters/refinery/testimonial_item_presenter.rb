@@ -15,6 +15,7 @@ module Refinery
       self.quote_tag = :blockquote
       self.cite_tag = :cite
       self.quote_includes_cite = true
+      self.content_wrapper_tag = :section
 
       def initialize(page_part)
         # return if page_part.nil?
