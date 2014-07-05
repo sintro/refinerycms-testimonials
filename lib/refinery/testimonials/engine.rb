@@ -18,7 +18,7 @@
           }
           plugin.options_template = 'testimonials_page_options'
           plugin.edit_page_template = 'positioning_tab'
-          plugin.page_attributes = %w(testimonials_show testimonials_count testimonials_select)
+          # plugin.page_attributes = %w(testimonials_show testimonials_count testimonials_select)
         end
       end
 
