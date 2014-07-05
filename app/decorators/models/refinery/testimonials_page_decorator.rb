@@ -17,13 +17,11 @@ Refinery::Page.class_eval do
 
   def add_testimonial_page_part
     testimonial_part = part_with_title('Testimonials')
-    Rails.logger.debug ".........Testimonial Part:#{testimonial_part} #{testimonials_show}"
     parts.build(title: 'Testimonials', position: parts.count, template: 'positioning_tab') if testimonials_show && !testimonial_part
   end
 
   def remove_testimonial_page_part
     testimonial_part = part_with_title('Testimonials')
-    Rails.logger.debug ".........Testimonial Part:#{testimonial_part} #{testimonials_show}"
     parts.delete(testimonial_part) if testimonial_part && !testimonials_show
   end
 
