@@ -1,0 +1,10 @@
+<%
+  content = content_tag(:div, class: 'wym_skin_refinery page_part', id:'page_testimonial_picker') do
+    if @testimonials.nil?
+      concat content_tag(:p, t('.no_testimonials_yet'))
+    else
+      concat select :page, :testimonial_ids, @testimonials.map{ |p| [p.name, p.id] }, {}, {:multiple=>true, :class=>:multiselect, :id=>:testimonial_multiselect}
+    end
+  end
+%>
+<%= content %>

@@ -1,0 +1,13 @@
+<div class='wym_box field testimonials_field'>
+  <ul id='page_testimonials' class='clearfix'>
+    <%= f.fields_for :testimonials do |testimonial_form| %>
+      <li id='testimonial_<%= testimonial_form.object_id %>'>
+        <%= testimonial_form.hidden_field :id %>
+        <%= image_fu testimonial_form.object, '100x100' %>
+        <% index = testimonial_form.object_name.split('[').last.split(']').first.to_i %>
+    </li>
+    <% end %>
+    <li class='empty'>
+    </li>
+  </ul>
+</div>
