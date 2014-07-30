@@ -1,0 +1,31 @@
+@import 'jquery-ui';
+@import 'jquery-ui.theme';
+@import 'jquery.uix.multiselect';
+@import 'refinery-colours';
+
+div.page_part.no_fields {
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  padding: 10px 0;
+}
+#page_testimonial_control {
+  select.multiselect {
+    width:60%;
+  }
+  .uix-multiselect {
+    margin-bottom:20px;
+    .multiselect-selected-list, .multiselect-available-list {
+      min-width:40%!important;
+      overflow: visible;
+    }
+  }
+  label.stripped, .label_with_help label{
+    font-size:140%;
+  }
+  .field { margin-top:20px;}
+  .hidden {
+    position: absolute;
+    left: -10000px;
+    top: -10000px;
+  }
+}

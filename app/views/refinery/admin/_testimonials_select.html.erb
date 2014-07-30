@@ -1,0 +1,10 @@
+<div class='field' id='testimonials_pick'>
+  <% collection = Refinery::Testimonials::Testimonial.all
+  if collection.nil? %>
+     <p><%= t.('.no_testimonials_yet')%></p>
+  <% else %>
+    <div class='wym_skin_refinery page_part', id:'page_testimonial_picker'>
+      <%= select( :page, :testimonial_ids, collection.map{ |t| [t.name, t.id ] }, {}, {:multiple=>true, :class=>:multiselect, :id=>:testimonial_multiselect}) %>
+    </div>
+  <% end %>
+</div>

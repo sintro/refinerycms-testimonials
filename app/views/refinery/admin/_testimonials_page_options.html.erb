@@ -1,5 +1,9 @@
 <!-- /refinerycms-testimonials/app/views/refinery/admin/_testimonials_page_options.html.erb -->
-<div  id='page_testimonial_control'>
+<% count = Refinery::Testimonials::Testimonial.count%>
+<div  id='page_testimonial_control' class='wym_skin_refinery visual_editor_box'>
+  <h2><%= t('.testimonials_header')%></h2>
+  <p> <%= t('.testimonials_show_count', count:count )%></p>
+  <p> <%= t('.testimonials_message_1') %></p>
 
   <div class='field enable'>
     <%= refinery_label_with_help(:testimonials_show)%>
@@ -8,22 +12,37 @@
   </div>
 
   <div class='fields'>
-    <div class='field'>
-      <%= refinery_label_with_help(:testimonials_count)%>
-      <%= f.number_field :testimonials_count  %>
+
+    <div class='field' id='testimonials_select'>
+      <%= refinery_label_with_help(:testimonials_select)%>
+      <p>You can </p>
+      <%= f.radio_button  :testimonials_select,  'Exact' %>
+      <%= f.label :testimonials_select, t('.testimonials_exact_label'), :value=> 'Pick', :class=>'stripped'%>
+      <p><%= t('.testimonials_computer_select')%></p>
+      <%= f.radio_button  :testimonials_select,  'Recent' %>
+      <%= f.label :testimonials_select, t('.testimonials_recent_label'), :value=> 'Recent', :class=>'stripped'%>
+      <%= f.radio_button  :testimonials_select,  'Random' %>
+      <%= f.label :testimonials_select, t('.testimonials_random_label'), :value => 'Random', :class=>'stripped' %>
     </div>
 
-    <div class='field'>
-      <%= refinery_label_with_help(:testimonials_seect)%>
-      <p>
-        Select Testimonals By
-      </p>
-      <%= f.radio_button  :testimonials_select,  'Recent' %>
-      <%= f.label :testimonials_select, 'By date (Recent first)', :value=> 'Recent', :class=>'stripped'%>
-      <br />
-      <%= f.radio_button  :testimonials_select,  'Random' %>
-      <%= f.label :testimonials_select, 'Random', :value => 'Random', :class=>'stripped' %>
+    <div class='field clearfix<%= ' hidden' if @page.testimonials_select!='Exact'%>' id='testimonials_counter_field'>
+      <%= refinery_label_with_help(:testimonials_count, count)%>
+      <%= f.number_field :testimonials_count, {min: 0, max:count }  %>
     </div>
+
+    <div class='field clearfix<%= ' hidden' if @page.testimonials_select=='Exact'%>' id='testimonials_picker'>
+      <% collection = Refinery::Testimonials::Testimonial.all
+      if collection.nil? %>
+         <p><%= t.('.no_testimonials_yet')%></p>
+      <% else %>
+        <%= select( :page, :testimony_ids, collection.collect{ |t| [t.name, t.id ] }, {:include_hidden => false}, {multiple: true, class: :multiselect, id: :testimonial_multiselect})
+        %>
+      <% end %>
+    </div>
+
   </div>
 </div>
-
+<%
+ content_for :stylesheets, stylesheet_link_tag('testimonials_backend')
+ content_for :javascripts, javascript_include_tag('refinery/testimonials')
+%>

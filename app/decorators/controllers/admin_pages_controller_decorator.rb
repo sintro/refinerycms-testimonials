@@ -6,7 +6,7 @@ Refinery::Admin::PagesController.class_eval do
 
     # Define the new method.
     define_method("page_params_with_testimonials_params") do
-      testimonials_params = params.require(:page).permit(:testimonials_show, :testimonials_count, :testimonials_select)
+      testimonials_params = params.require(:page).permit(:testimonials_show, :testimonials_count, :testimonials_select, :testimony_ids => [])
       page_params_method.bind(self).call().merge(testimonials_params)
     end
   end

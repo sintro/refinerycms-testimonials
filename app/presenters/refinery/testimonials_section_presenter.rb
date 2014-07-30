@@ -18,6 +18,7 @@ module Refinery
       self.content_wrapper_tag = :section
 
       def initialize(page_part)
+        Rails.logger.debug ".............Testimonials Presenter Initialized"
         # return if page_part.nil?
         super
         self.fallback_html = ""
