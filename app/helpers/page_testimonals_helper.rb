@@ -1,11 +1,12 @@
 module Refinery
   module Admin
     module PageTestimonialsHelper
-      def testimonials_picker(collection)
-        picker = collection.nil? ? content_tag(:p, t('.no_testimonials_yet')) :
-          select_tag( :page, :testimonies_ids, collections.map{ |t| [t.name, t.id ] }, {}, {:multiple=>true, :class=>:multiselect, :id=>:testimonial_multiselect})
-        content_tag(:div, picker, class: 'wym_skin_refinery page_part', id:'page_testimonial_picker')
+      def refinery_label_with_help(name, value=nil)
+       content_tag(:span, class: :label_with_help) do
+        label_tag( name, t(".#{name}", value)) <<  refinery_help_tag( t(".#{name}_help"))
       end
+    end
+
     end
   end
 end
