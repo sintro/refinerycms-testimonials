@@ -26,7 +26,7 @@
     </div>
 
     <div class='field clearfix<%= ' hidden' if @page.testimonials_select!='Exact'%>' id='testimonials_counter_field'>
-      <%= refinery_label_with_help(:testimonials_count, count)%>
+      <%= refinery_label_with_help(:testimonials_count)%>
       <%= f.number_field :testimonials_count, {min: 0, max:count }  %>
     </div>
 
