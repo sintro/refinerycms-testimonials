@@ -6,15 +6,16 @@ en:
         description: Create and manage Testimonials for your site
     testimonials:
       admin:
-         testimonials:
-           tabs:
-             title: Testimonials
-             reorder_only: Use this tab to re-order the display of testimonials on this page. To control which testimonials are displayed use the Testimonials Options link below.
-             show_on_page: Show Testimonials on this page?
-             how_many: How many testimonials to show (Enter 0 to show all)
-             recent: Recent
-             random: Random
-             by_date: By date (Recent first)
+        testimonials:
+          tabs:
+            testimonial_control:
+             testimonials_show: Show Testimonials
+             testimonials_show_label: Show testimonials on this page. Use the options below to control which testimonials are shown.
+             testimonials_show_help: Check this box if you want testimonials displayed on this page
+             testimonials_count: How many testimonials should appear on this page (0 for all)?
+             testimonials_count_help: Enter the number of testimonials which should appear on this page.
+             testimonials_select: Which testimonials should appear on this page?
+             testimonials_select_help: If you select random testimonials will be shown in any order. If you select Recent testimonials will be shown with the most recent first
           records:
             title: Testimonials
             no_items_yet: There are no testimonials yet.
@@ -32,4 +33,3 @@ en:
       refinery/testimonials/testimonial:
         name: Name
         quote: Quote
-
