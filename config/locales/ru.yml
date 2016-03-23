@@ -1,0 +1,39 @@
+ru:
+  refinery:
+    plugins:
+      refinery_testimonials:
+        title: Отзывы
+        description: Создавайте и управляйте отзывами на вашем сайте
+    testimonials:
+      admin:
+        testimonials:
+          tabs:
+            testimonial_control:
+              testimonials_show: Показать Отзывы
+              testimonials_show_label: Показывать отзывы на сайте. Используйте настройки ниже для того, чтобы выбрать, какие отзывы отображать
+              testimonials_show_help: Отметьте эту опцию, чтобы показать отзывы на странице
+              testimonials_count: Сколько отзывов должно отображаться на странице? (0 - все)
+              testimonials_count_help: Введите количество отзывов, которые будут показаны
+              testimonials_select: Какие отзывы должны отображаться на странице?
+              testimonials_select_help: Если вы выберете Случайно, то отзывы будут выбраны случайным образом. Выберите Недавние, чтобы показать только последние отзывы
+              select_testimonals_by: Выбирать Отзывы
+              by_date: Последние (По дате)
+              random: Случайно
+          records:
+            title: Отзывы
+            no_items_yet: Отзывы еще не добавлены.
+          actions:
+            create_new: Добавить новый Отзыв
+            reorder: Сортировать Отзывы
+            reorder_done: Закончить сортировку
+          testimonial:
+            edit: Редактировать этот Отзыв
+            delete: Удалить этот Отзыв навсегда
+  activerecord:
+    models:
+      refinery/testimonials/testimonial: отзыв
+    attributes:
+      refinery/testimonials/testimonial:
+        name: Имя
+        quote: Цитата
+        teaser: Тизер
