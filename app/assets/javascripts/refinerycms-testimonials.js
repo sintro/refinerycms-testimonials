@@ -7,5 +7,5 @@ jQuery(function() {
 		var disabled = !this.checked;
 		input_fields.each(function() {$(this).attr('disabled', disabled);});
 	});
-	$('#testimonial-tabs').tabs();
+	$('#page-tabs').tabs();
 });

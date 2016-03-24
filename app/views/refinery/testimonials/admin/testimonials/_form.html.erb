@@ -11,19 +11,33 @@
     <%= f.text_field :name, class: 'larger widest'  %>
   </div>
 
-  <div id='testimonial-tabs'>
-    <ul class='tab-list clearfix'>
-      <% [:quote, :teaser].each do |part| %>
-        <li>
-          <%= link_to t(part, scope: 'activerecord.attributes.refinery/testimonials/testimonial'), "##{part}" %>
-        </li>
-      <% end %>
-    </ul>
-    <% [:quote, :teaser].each do |part| %>
-      <div class='refinery_html_field' id='<%= part %>'>
-        <%= f.text_area part, rows: 20, class: 'wymeditor widest' %>
-      </div>
-    <% end %>
+   <div class='field'>
+      <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+        <ul id='page_parts'>
+          <% [:quote, :teaser].each do |part| %>
+            <li class='ui-state-default'>
+              <%= link_to t(part, scope: 'activerecord.attributes.refinery/testimonials/testimonial'), "#page_part_#{part}" %>
+            </li>
+          <% end %>
+          <% Refinery::Testimonials.tabs.each_with_index do |tab, tab_index| %>
+            <li class='ui-state-default' id="custom_<%= tab.name %>_tab">
+              <%= link_to tab.name.titleize, "#custom_tab_#{tab_index}" %>
+            </li>
+          <% end %>
+        </ul>
+        <div id='page_part_editors'>
+          <% [:quote, :teaser].each do |part| %>
+            <div class='page_part' id='<%= "page_part_#{part}" %>'>
+              <%= f.text_area part, rows: 20, class: 'wymeditor widest' %>
+            </div>
+          <% end %>
+          <% Refinery::Testimonials.tabs.each_with_index do |tab, tab_index| %>
+            <div class='page_part' id='<%= "custom_tab_#{tab_index}" %>'>
+              <%= render tab.partial, :f => f %>
+            </div>
+          <% end %>
+        </div>
+    </div>
   </div>
 
   <div class='field'>
