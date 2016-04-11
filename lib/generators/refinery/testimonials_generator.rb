@@ -1,6 +1,12 @@
 module Refinery
   class TestimonialsGenerator < Rails::Generators::Base
 
+    source_root File.expand_path("../templates", __FILE__)
+
+    def generate_blog_initializer
+      template "config/initializers/refinery/testimonials.rb.erb", File.join(destination_root, "config", "initializers", "refinery", "testimonials.rb")
+    end
+
     def rake_db
       rake "refinery_testimonials:install:migrations"
     end

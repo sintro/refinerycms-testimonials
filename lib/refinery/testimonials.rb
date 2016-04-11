@@ -5,7 +5,13 @@ module Refinery
   autoload :TestimonialsGenerator, 'generators/refinery/testimonials_generator'
 
   module Testimonials
+    include ActiveSupport::Configurable
+    config_accessor :page_url
+
     require 'refinery/testimonials/engine'
+
+
+    self.page_url = "/testimonials"
 
     autoload :Tab, 'refinery/testimonials/tabs'
 
